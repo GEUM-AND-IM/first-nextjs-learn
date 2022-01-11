@@ -1,12 +1,12 @@
 import NavBar from "../components/NavBar";
 
-const Home: React.FC = () => {
+const About: React.FC = () => {
   return (
     <div>
       <NavBar />
-      home
+      about
     </div>
   );
 };
 
-export default Home;
+export default About;
