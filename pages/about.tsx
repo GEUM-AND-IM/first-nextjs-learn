@@ -1,9 +1,9 @@
-import NavBar from "../components/NavBar";
+import Seo from "../components/Seo";
 
 const About: React.FC = () => {
   return (
     <div>
-      <NavBar />
+      <Seo title="Home" />
       about
     </div>
   );

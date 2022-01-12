@@ -3,7 +3,7 @@ import styles from "./NavBar.module.css";
 
 const NavBar = () => {
   return (
-    <nav className={`${styles.link} ${styles.nav}`}>
+    <nav>
       <Link href="/">
         <a>home</a>
       </Link>
