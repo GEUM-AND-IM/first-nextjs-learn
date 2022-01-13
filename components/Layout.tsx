@@ -1,4 +1,3 @@
-import { ReactChildren } from "react";
 import NavBar from "./NavBar";
 
 const Layout: React.FC<{ children: JSX.Element }> = ({ children }) => {

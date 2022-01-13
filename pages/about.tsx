@@ -3,7 +3,7 @@ import Seo from "../components/Seo";
 const About: React.FC = () => {
   return (
     <div>
-      <Seo title="Home" />
+      <Seo title="About" />
       about
     </div>
   );
