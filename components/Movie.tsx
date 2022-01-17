@@ -19,7 +19,8 @@ const MovieBox = styled.div`
   position: relative;
   cursor: pointer;
   &:hover {
-    top: -20px;
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1.05) translateY(-10px);
   }
 `;
 

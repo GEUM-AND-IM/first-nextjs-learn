@@ -4,8 +4,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import Movie from "../components/Movie";
 
-const API_KEY = "718e2999073a086d0d475ffef6579d06";
-
 interface IMovieAPI {
   page: number;
   results: IMovie[];
@@ -42,9 +40,7 @@ const MovieWrap = styled.div`
 
 const Home: React.FC = () => {
   const fetchMovieData = async () => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=ko`
-    );
+    const res = await fetch(`/api/movie`);
     const json = await res.json();
     const movieArr = json;
     return movieArr;
