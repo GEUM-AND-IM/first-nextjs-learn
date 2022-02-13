@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { useState } from "react";
 import styled from "styled-components";
 import Movie from "../components/Movie";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 interface IMovieAPI {
   page: number;
@@ -38,38 +39,41 @@ const MovieWrap = styled.div`
   row-gap: 30px;
 `;
 
-const Home: React.FC = () => {
-  const fetchMovieData = async () => {
-    const res = await fetch(`/api/movie`);
-    const json = await res.json();
-    const movieArr = json;
-    return movieArr;
-  };
-  const { isLoading, data } = useQuery<IMovieAPI>("movieFetch", fetchMovieData);
-
+const Home: React.FC = ({
+  results,
+}: InferGetServerSidePropsType<GetServerSideProps>) => {
   return (
     <HomeWrap>
       <Seo title="Home" />
-      {isLoading ? (
-        "Loading..."
-      ) : (
-        <>
-          {data && (
-            <MovieWrap>
-              {data?.results?.map((movie) => {
-                return (
-                  <Movie
-                    imgUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    title={movie.title}
-                  />
-                );
-              })}
-            </MovieWrap>
-          )}
-        </>
-      )}
+
+      <>
+        {results && (
+          <MovieWrap>
+            {results?.map((movie: IMovie) => {
+              return (
+                <Movie
+                  imgUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  title={movie.title}
+                />
+              );
+            })}
+          </MovieWrap>
+        )}
+      </>
     </HomeWrap>
   );
 };
 
 export default Home;
+
+export async function getServerSideProps({}: GetServerSideProps) {
+  const res = await fetch("http://localhost:3000/api/movies");
+
+  const { results } = await res.json();
+
+  return {
+    props: {
+      results,
+    },
+  };
+}

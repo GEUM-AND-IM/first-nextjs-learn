@@ -16,7 +16,7 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: "/api/movie",
+        source: "/api/movies",
         destination: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=ko`,
       },
     ];
