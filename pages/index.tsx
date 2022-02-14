@@ -1,6 +1,4 @@
 import Seo from "../components/Seo";
-import { useQuery } from "react-query";
-import { useState } from "react";
 import styled from "styled-components";
 import Movie from "../components/Movie";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
@@ -45,7 +43,6 @@ const Home: React.FC = ({
   return (
     <HomeWrap>
       <Seo title="Home" />
-
       <>
         {results && (
           <MovieWrap>
@@ -54,6 +51,8 @@ const Home: React.FC = ({
                 <Movie
                   imgUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   title={movie.title}
+                  movieId={movie.id}
+                  key={movie.id}
                 />
               );
             })}

@@ -1,9 +1,11 @@
+import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 
 interface IMovieProps {
   imgUrl: string;
   title: string;
+  movieId: number;
 }
 
 const MovieBg = styled.img`
@@ -31,9 +33,14 @@ const MovieTitle = styled.h1`
   text-align: center;
 `;
 
-const Movie: React.FC<IMovieProps> = ({ imgUrl, title }) => {
+const Movie: React.FC<IMovieProps> = ({ imgUrl, title, movieId }) => {
+  const router = useRouter();
+  const goToMovieDetail = (id: number, title: string) => {
+    router.push(`/movies/${title}/${id}`);
+  };
+
   return (
-    <MovieBox>
+    <MovieBox onClick={() => goToMovieDetail(movieId, title)}>
       <MovieBg src={imgUrl} />
       <MovieTitle>{title}</MovieTitle>
     </MovieBox>
