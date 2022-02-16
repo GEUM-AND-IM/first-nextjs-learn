@@ -196,6 +196,7 @@ const Detail: React.FC = ({
                   src={
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOXs3OJfXyxZU7eTXNK7psJj5j5ALOnkKxjMSjBFd3Z7h-nEeSMJo8GLLy7XWyneTKKwQ&usqp=CAU"
                   }
+                  alt="play"
                 />
               </DetailMoviePlayButton>
               <DetailMovieSideButton>
